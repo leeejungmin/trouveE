@@ -54,9 +54,10 @@
                   </TR>
                   <TR>
                     <TD valign="TOP" align="CENTER" colspan=2>
+                      <TEXTAREA id="resarea" NAME="rawdata" rows=12 cols=50></TEXTAREA>
                       <SCRIPT language="JAVASCRIPT">
-var introtext = 'Copy text from any source and paste it into here. Then click extract button. You can select different (or enter your own), group a number of emails and sort extracted emails alphabetically.';
-document.write('<TEXTAREA NAME="rawdata" rows=12 cols=50 onFocus="if (this.value == introtext) this.value = \'\';">' + introtext + '</TEXTAREA>');
+// var introtext = 'Copy text from any source and paste it into here. Then click extract button. You can select different (or enter your own), group a number of emails and sort extracted emails alphabetically.';
+// document.write('<TEXTAREA id="resarea" NAME="rawdata" rows=12 cols=50 onFocus="if (this.value == introtext) this.value = \'\';">' + introtext + '</TEXTAREA>');
 // document.write('<TEXTAREA NAME="rawdata" rows=12 cols=12 >Je t\'aime</TEXTAREA>');
             </SCRIPT>
                     </TD>
@@ -83,6 +84,17 @@ document.write('<TEXTAREA NAME="rawdata" rows=12 cols=50 onFocus="if (this.value
                     <TD align="LEFT">
                       <INPUT name="BUTTON" type="BUTTON" class="button" onClick="findEmail()" value="Extract">
                       <INPUT name="RESET" type="RESET" class="button" value="Reset">
+                      <!-- <input type="submit" value="emailsenddd" id="emailsend"> -->
+
+                      <!-- <script>
+                      // trait pour prenom
+                      $('#emailsend').click(function(){
+                        var p = $('#resarea').val();
+                        // $('#field').val(p);
+                        $('#email').html(p);
+                      });
+                      </script> -->
+
                       <SCRIPT language="JavaScript" type="text/javascript">
 <!--
 if ((navigator.appName=="Microsoft Internet Explorer")&&(parseInt(navigator.appVersion)>=4)) {
@@ -96,6 +108,9 @@ if ((navigator.appName=="Microsoft Internet Explorer")&&(parseInt(navigator.appV
                     <TD align="RIGHT" valign="BOTTOM" nowrap> Email count:
                         <INPUT name="count" size=5 readonly>
                     </TD>
+
+                      <TEXTAREA id="resarea1" NAME="phonedata" rows=5 cols=50></TEXTAREA>
+
                   </TR>
                 </TABLE>
               </TD>
@@ -109,10 +124,15 @@ if ((navigator.appName=="Microsoft Internet Explorer")&&(parseInt(navigator.appV
   </tr>
 </table>
  </div>
- <div class="col-md-3">
+
+
+
+ <hr />
+ <!-- <div class="col-md-3">
    <H3>LEE</H3>
    <H3>JUNG</H3>
    <h3>MIN</h3>
+   <hr />
   <div class="row">
     <div class="col-md-4">
       leee
@@ -124,33 +144,52 @@ if ((navigator.appName=="Microsoft Internet Explorer")&&(parseInt(navigator.appV
       min
     </div>
   </div>
-</div>
+</div> -->
 
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-  <div class="row"> </div>
+<hr />
+<hr />
 
 
+  <div class="row">
+    <div class="row">
+    <table id="tblData">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+      <tr>
+        <td ><p id="prenom">LEEE</p></td>
+        <td> <p id="email"></p></td>
+        <td id="phone">000-000-0000</td>
+      </tr>
+      <tr>
+        <td>Ecrire Prenom</td>
+        <td><input class="form-control" type="text" id="field"/></td>
+        <td><input type="button" value="prenom" id="sub"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="button" value="email" id="emailsend"></td>
+        <td><input type="button" value="phone" id="phonesend"></td>
+      </tr>
+      <tr>
+        <th></th>
+        <th> <button onclick="exportTableToExcel('tblData')">Export Table Data To Excel File</button></th>
+        <th><button onclick="exportTableToExcel('tblData', 'members-data')">Export Table Data To Excel File</button></th>
+      </tr>
+    </table>
+  </div>
+    <div class="row">
 
 
-      <table id="tblData">
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-        </tr>
-        <tr>
-            <td ><p id="prenom">LEEE</p></td>
-            <td id="email">john@gmail.com</td>
-            <td id="phone">000-000-0000</td>
-        </tr>
-        <tr>
-            <td><input class="form-control" type="text" id="field"/></td>
-            <td><input type="submit" value="PRENOM" id="sub"></td>
-            <td>Juste Ecrire</td>
-        </tr>
+  </div>
+</div>
+
         <script>
         // trait pour prenom
         $('#sub').click(function(){
@@ -158,6 +197,22 @@ if ((navigator.appName=="Microsoft Internet Explorer")&&(parseInt(navigator.appV
           // $('#field').val(p);
           $('#prenom').html(p);
         });
+
+
+        // trait pour email
+        $('#emailsend').click(function(){
+          var p = $('#resarea').val();
+          // $('#field').val(p);
+          $('#email').html(p);
+        });
+
+        // trait pour phone
+        $('#phonesend').click(function(){
+          var p = $('#resarea2').val();
+          // $('#field').val(p);
+          $('#phone').html(p);
+        });
+
         </script>
 
 <!-- Bootstrap core JavaScript
