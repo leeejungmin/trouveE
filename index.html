@@ -2,39 +2,106 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <!-- <script
+      src="https://code.jquery.com/jquery-2.1.0.js"
+      integrity="sha256-D6d1KSapXjq2tfZ6Ie9AYozkRHyB3fT2ys9mO2+4Wvc="
+      crossorigin="anonymous"></script> -->
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
-    $(document).ready(function(){
-    $('#btnSubmit').click(function(){
-    $('#btnSubmit').disabled = true;
-    var val = $('#emailAddress')[0].value;
-    $('#emailResponse').html('<img src="ajax-loader.gif" border="0" />').css('backgroundColor', 'ffffd0');
-    $.getJSON('notify.php',{email: val}, function(data){
-        if (!data.result) {
-            $('#emailResponse').html(data.message).css('backgroundColor','ff9999').effect('highlight', {color: '#ffff99'}, 1000);
-        } else {
-            $('#emailResponse').html(data.message).css('backgroundColor','99ff99').effect('highlight', {color: '#ffff99'}, 1000);
-        }
-        });
-            $('#btnSubmit').disabled = false;
-            return false;
-    });
-$('#emailAddress').keyup(function(e) {
-    if(e.keyCode == 13) {
-        $('#btnSubmit').click();
-    }
-    return false;
-});
-});
+    function exportTableToExcel(tableID, filename = ''){
+      var downloadLink;
+      var dataType = 'application/vnd.ms-excel';
+      var tableSelect = document.getElementById(tableID);
+      var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
 
-</script>
+      // Specify file name
+      filename = filename?filename+'.xls':'excel_data.xls';
+
+      // Create download link element
+      downloadLink = document.createElement("a");
+
+      document.body.appendChild(downloadLink);
+
+      if(navigator.msSaveOrOpenBlob){
+          var blob = new Blob(['\ufeff', tableHTML], {
+              type: dataType
+          });
+          navigator.msSaveOrOpenBlob( blob, filename);
+      }else{
+          // Create a link to the file
+          downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+          // Setting the file name
+          downloadLink.download = filename;
+
+          //triggering the function
+          downloadLink.click();
+      }
+  }
+
+
+
+    </script>
+
+
     <title>chris</title>
   </head>
   <body>
-    <div style="margin:0 auto;background:#ffffd0;width:500px;padding:10px;text-align:center; font-family:Verdana,Arial,sans-serif; border:1px solid black;">
-    If you would like to be notified when we launch, please leave your email address here.<br /><br />
-    <input type="text" id="emailAddress" size="40" style="border:1px solid gray;padding:5px;"/>
-    <input type="button" id="btnSubmit" value="Submit" style="padding:5px;" />
-    <div style="padding:10px;margin:10px;" id="emailResponse"></div>
+    <table id="tblData">
+      <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+      </tr>
+      <tr>
+          <td ><p id="prenom">LEEE</p></td>
+          <td id="email">john@gmail.com</td>
+          <td id="phone">000-000-0000</td>
+      </tr>
+      <tr>
+          <td><input class="form-control" type="text" id="field"/></td>
+          <td><input type="submit" value="PRENOM" id="sub"></td>
+          <td>Juste Ecrire</td>
+      </tr>
+
+      <!-- <div id="venue">jungmin</div>
+      <input class="form-control" type="text" id="texted" />
+
+      <button type="button" id="btn">copy me</button> -->
+
+      <script>
+      // trait pour prenom
+      $('#sub').click(function(){
+        var p = $('#field').val();
+        // $('#field').val(p);
+        $('#prenom').html(p);
+      });
+
+
+
+
+
+      // function display() {
+      //     var singleValues = $( "#field" ).val();
+      //
+      //     // When using jQuery 3:
+      //     // var multipleValues = $( "#multiple" ).val();
+      //     $( "#texted" ).html(  singleValues
+      //        );
+      //   }
+        // $( "select" ).change( display );
+        // display();
+      </script>
+      <tr>
+          <td>Sam Farmer</td>
+          <td>sam@gmail.com</td>
+          <td>France</td>
+      </tr>
 </div>
+</table>
+
+
+<button onclick="exportTableToExcel('tblData')">Export Table Data To Excel File</button>
+<button onclick="exportTableToExcel('tblData', 'members-data')">Export Table Data To Excel File</button>
   </body>
 </html>

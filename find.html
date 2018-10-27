@@ -14,19 +14,25 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
-<title>TrouveWEB</title>
+<meta name="description" content="EXTRATOR">
+<meta name="author" content="JUNGMIN">
+
 <meta name="description" content="Free online resources, Tutorials Video to help you learn.  Easy and free to use site bring you the best online tools and resources.">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 <link href="../assets/css/bootstrap-social.css" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+
 </head>
 <body>
 <div id="fb-root"></div>
 <div class="container" >
   <div style="text-align:right">
+    <div class="fb-like" data-href="http://www.discoveryvip.com" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></div>
+    <!-- Place this code where you want the badge to render. -->
+
 
 
    <div class="row">
@@ -35,11 +41,7 @@
 <table width="100%" border="1" cellpadding="0" cellspacing="0">
 
   <tr>
-    <td align="center" valign="top"  class='menucl' >Code Generator free online
-      Flash drop down menu, Graphic Navigation Bar, CSS navigation bar, Flash
-      Buttons, DHTML, drop down menus, tool bars, tool tips. Also free Online
-      meta tag generator, IP checker, email extraction, Javascripts, HTML generation
-      tutorials for IT.
+    <td align="center" valign="top"  class='menucl' >FIND EMAIL
         <FORM name="extractor">
           <TABLE bgcolor="#CCCCCC" cellpadding=1 cellspacing=0 border=0>
             <TR>
@@ -53,12 +55,30 @@
                   <TR>
                     <TD valign="TOP" align="CENTER" colspan=2>
                       <SCRIPT language="JAVASCRIPT">
-var introtext = 'Copy text from any source and paste it into here. Then click extract button. You can select different separator (or enter your own), group a number of emails and sort extracted emails alphabetically.';
+var introtext = 'Copy text from any source and paste it into here. Then click extract button. You can select different (or enter your own), group a number of emails and sort extracted emails alphabetically.';
 document.write('<TEXTAREA NAME="rawdata" rows=12 cols=50 onFocus="if (this.value == introtext) this.value = \'\';">' + introtext + '</TEXTAREA>');
+// document.write('<TEXTAREA NAME="rawdata" rows=12 cols=12 >Je t\'aime</TEXTAREA>');
             </SCRIPT>
                     </TD>
                   </TR>
-
+                  <TR>
+                    <TD valign="TOP" align="LEFT" colspan=2> Separator:
+                        <SELECT name="sep">
+                          <OPTION value=", ">Comma</OPTION>
+                          <OPTION value="|">Pipe</OPTION>
+                          <OPTION value=" : ">Colon</OPTION>
+                          <OPTION value="new">New Line</OPTION>
+                          <OPTION value="other">Other</OPTION>
+                        </SELECT>
+                        <INPUT type="TEXT" name="othersep" size=3 onBlur="checksep(this.value)">
+&nbsp;&nbsp; Group:
+                    <INPUT type="TEXT" size=3 name="groupby" onBlur="numonly(this.value)">
+                    Emails &nbsp;&nbsp;
+                    <LABEL for="sortbox">
+                    <INPUT type="CHECKBOX" name="sort" id="sortbox">
+                    Sort Alphabetically</LABEL>
+                    </TD>
+                  </TR>
                   <TR valign="TOP">
                     <TD align="LEFT">
                       <INPUT name="BUTTON" type="BUTTON" class="button" onClick="findEmail()" value="Extract">
@@ -82,146 +102,72 @@ if ((navigator.appName=="Microsoft Internet Explorer")&&(parseInt(navigator.appV
             </TR>
           </TABLE>
         </FORM>
-        <SCRIPT language="JAVASCRIPT" type="text/javascript">
-<!-- Begin
+        </div></div></div></div>
 
-// Created and Copyrighted by Benjamin Leow
-// Please go to http://www.surf7.net for latest version and more freeware
 
-function copy() {
-highlight();
-textRange = document.extractor.rawdata.createTextRange();
-textRange.execCommand("RemoveFormat");
-textRange.execCommand("Copy");
-window.alert("The content has been copied to your clipboard.");
-}
-
-function highlight(){
-document.extractor.rawdata.focus()
-document.extractor.rawdata.select()
-}
-
-function checksep(value){
-if (value) document.extractor.sep.value = "other";
-}
-
-function numonly(value){
-if (isNaN(value)) {
-    window.alert("Please enter a number or else \nleave blank for no grouping.");
-    document.extractor.groupby.focus();
-}
-}
-
-function findEmail() {
-var email = "No email address detected";
-var a = 0;
-var ingroup = 0;
-var separator = document.extractor.sep.value;
-var groupby = Math.round(document.extractor.groupby.value);
-
-if (separator == "new") separator = "\n";
-if (separator == "other") separator = document.extractor.othersep.value;
-var rawemail = document.extractor.rawdata.value.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
-var norepeat = new Array();
-if (rawemail) {
-	for (var i=0; i<rawemail.length; i++) {
-		var repeat = 0;
-
-		// Check for repeated emails routine
-		for (var j=i+1; j<rawemail.length; j++) {
-			if (rawemail[i] == rawemail[j]) {
-				repeat++;
-			}
-		}
-
-		// Create new array for non-repeated emails
-		if (repeat == 0) {
-			norepeat[a] = rawemail[i];
-			a++;
-		}
-	}
-	if (document.extractor.sort.checked) norepeat = norepeat.sort(); // Sort the array
-	email = "";
-	// Join emails together with separator
-	for (var k = 0; k < norepeat.length; k++) {
-		if (ingroup != 0) email += separator;
-		email += norepeat[k];
-		ingroup++;
-
-		// Group emails if a number is specified in form. Each group will be separate by new line.
-		if (groupby) {
-		    if (ingroup == groupby) {
-		        email += '\n\n';
-		        ingroup = 0;
-		    }
-		}
-	}
-}
-
-// Return array length
-var count = norepeat.length;
-
-// Print results
-document.extractor.count.value = count;
-document.extractor.rawdata.value = email;
-}
-//  End -->
-  </SCRIPT>
     </td>
   </tr>
 </table>
  </div>
+ <div class="col-md-3">
+   <H3>LEE</H3>
+   <H3>JUNG</H3>
+   <h3>MIN</h3>
+  <div class="row">
+    <div class="col-md-4">
+      leee
+     </div>
+    <div class="col-md-4">
+      jung
+    </div>
+    <div class="col-md-4">
+      min
+    </div>
+  </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+  <div class="row"> </div>
+
+
+
+
+      <table id="tblData">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+        <tr>
+            <td ><p id="prenom">LEEE</p></td>
+            <td id="email">john@gmail.com</td>
+            <td id="phone">000-000-0000</td>
+        </tr>
+        <tr>
+            <td><input class="form-control" type="text" id="field"/></td>
+            <td><input type="submit" value="PRENOM" id="sub"></td>
+            <td>Juste Ecrire</td>
+        </tr>
+        <script>
+        // trait pour prenom
+        $('#sub').click(function(){
+          var p = $('#field').val();
+          // $('#field').val(p);
+          $('#prenom').html(p);
+        });
+        </script>
 
 <!-- Bootstrap core JavaScript
     ================================================== -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script> -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script type="text/javascript">
+<script src="table.js"></script>
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-24457393-3']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-<!--- UNDERDOGMEDIA Pop Under JavaScript ADCODE START--->
-<script language="javascript">
-var d=new Date();
-var b=d.getSeconds();
-document.write('<scr'+'ipt language="javascript" src="http://udmserve.net/udm/img.fetch?sid=384;tid=3;ev=1;dt=4;b='+b+'"></scr'+'ipt>');
-</script>
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '594115200714962',
-      xfbml      : true,
-      version    : 'v2.1'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-   </script>
-
-
-   <script type="text/javascript">
-var infolinks_pid = 2396320;
-var infolinks_wsid = 0;
-</script>
-<script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
 <!--- UNDERDOGMEDIA Pop Under JavaScript ADCODE END--->
 </body>
 </html>
