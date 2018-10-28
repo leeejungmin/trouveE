@@ -1,13 +1,4 @@
 
-<html>
-<head>
-<head>
-<title>Free Online Email Extractor</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<META NAME="description" CONTENT="Online Email Extrator, seperate your emails from the rest of your document easily with simple cut and paste.  Then organize your emails here">
-<META NAME="keywords" CONTENT="email, simple, free, email extract, email extractor, email sorter">
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,12 +13,13 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 <link href="../assets/css/bootstrap-social.css" rel="stylesheet">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
-
+<link href="style.css" rel="stylesheet" />
 
 </head>
 <body>
-<div id="fb-root"></div>
+
 <div class="container" >
   <div style="text-align:right">
     <div class="fb-like" data-href="http://www.discoveryvip.com" data-layout="button" data-action="like" data-show-faces="false" data-share="true"></div>
@@ -38,52 +30,74 @@
    <div class="row">
 
    <div class="col-md-9">
-<table width="100%" border="1" cellpadding="0" cellspacing="0">
+<table class="table " width="100%" style="color:blue; border-color: coral;"  border="3" cellpadding="0" cellspacing="0">
 
   <tr>
-    <td align="center" valign="top"  class='menucl' >FIND EMAIL
+    <td align="center" valign="top"  class='menucl' >
+
         <FORM name="extractor">
           <TABLE bgcolor="#CCCCCC" cellpadding=1 cellspacing=0 border=0>
             <TR>
               <TD>
                 <TABLE border=0 cellpadding=8 cellspacing=0 bordercolor="#000000" bgcolor="#CCCCCC">
                   <TR class="titlebarcolor">
-                    <TD valign="TOP" colspan=2 ><h2 align="center"><FONT class="titlefont"><strong>Email
-                            Extractor</strong></FONT></h2>
+                    <TD valign="TOP" colspan=2 >
+                      <h3 align="center"><FONT class="titlefont"><strong>Email Extractor</strong></FONT></h3>
                     </TD>
                   </TR>
                   <TR>
                     <TD valign="TOP" align="CENTER" colspan=2>
-                      <TEXTAREA id="resarea" NAME="rawdata" rows=12 cols=50></TEXTAREA>
+                      <!-- <TEXTAREA id="resarea" NAME="rawdata" rows=5 cols=50></TEXTAREA> -->
                       <SCRIPT language="JAVASCRIPT">
-// var introtext = 'Copy text from any source and paste it into here. Then click extract button. You can select different (or enter your own), group a number of emails and sort extracted emails alphabetically.';
-// document.write('<TEXTAREA id="resarea" NAME="rawdata" rows=12 cols=50 onFocus="if (this.value == introtext) this.value = \'\';">' + introtext + '</TEXTAREA>');
+var introtext = 'Copy text from any source and paste it into here. Then click extract button. You can select different (or enter your own), group a number of emails and sort extracted emails alphabetically.';
+document.write('<TEXTAREA id="resarea" NAME="rawdata" rows=7 cols=50 onFocus="if (this.value == introtext) this.value = \'\';">' + introtext + '</TEXTAREA>');
 // document.write('<TEXTAREA NAME="rawdata" rows=12 cols=12 >Je t\'aime</TEXTAREA>');
-            </SCRIPT>
+                      </SCRIPT>
+                    </TD>
+                  </TR>
+
+
+                  <TR>
+                    <TD valign="TOP" align="CENTER" colspan=2>
+                      <h3 align="center"><FONT class="titlefont"><strong>Phoneextractor</strong></FONT></h3>
+                      <TEXTAREA id="resarea1" NAME="phonedata" rows=5 cols=50></TEXTAREA>
                     </TD>
                   </TR>
                   <TR>
-                    <TD valign="TOP" align="LEFT" colspan=2> Separator:
-                        <SELECT name="sep">
+                    <TD valign="TOP" align="CENTER" colspan=2>
+                      <h3 align="center"><FONT class="titlefont"><strong>EcrirePrenom</strong></FONT></h3>
+                      <TEXTAREA id="field" NAME="phonedata" rows=5 cols=50></TEXTAREA>
+                    </TD>
+                  </TR>
+
+
+                  <TR>
+                    <TD valign="TOP" align="LEFT" colspan=2>
+                      <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                        </div>
+                        <SELECT class="custom-select" id="inputGroupSelect01"name="sep">
                           <OPTION value=", ">Comma</OPTION>
                           <OPTION value="|">Pipe</OPTION>
                           <OPTION value=" : ">Colon</OPTION>
                           <OPTION value="new">New Line</OPTION>
                           <OPTION value="other">Other</OPTION>
                         </SELECT>
-                        <INPUT type="TEXT" name="othersep" size=3 onBlur="checksep(this.value)">
+                      </div>
+                        <INPUT type="TEXT" style="color:blue; border-color: coral;"  border="3" name="othersep" size=3 onBlur="checksep(this.value)">
 &nbsp;&nbsp; Group:
-                    <INPUT type="TEXT" size=3 name="groupby" onBlur="numonly(this.value)">
+                    <INPUT type="TEXT" style="color:blue; border-color: coral;"  border="3" size=3 name="groupby" onBlur="numonly(this.value)">
                     Emails &nbsp;&nbsp;
                     <LABEL for="sortbox">
-                    <INPUT type="CHECKBOX" name="sort" id="sortbox">
+                    <INPUT type="CHECKBOX" aria-label="Checkbox for following text input"  name="sort" id="sortbox">
                     Sort Alphabetically</LABEL>
                     </TD>
                   </TR>
                   <TR valign="TOP">
                     <TD align="LEFT">
-                      <INPUT name="BUTTON" type="BUTTON" class="button" onClick="findEmail()" value="Extract">
-                      <INPUT name="RESET" type="RESET" class="button" value="Reset">
+                      <INPUT class="btn btn-warning " name="BUTTON" type="BUTTON" class="button" onClick="findEmail()" value="Extract">
+                      <INPUT class="btn btn-warning " name="RESET" type="RESET" class="button" value="Reset">
                       <!-- <input type="submit" value="emailsenddd" id="emailsend"> -->
 
                       <!-- <script>
@@ -96,20 +110,21 @@
                       </script> -->
 
                       <SCRIPT language="JavaScript" type="text/javascript">
-<!--
+
+$("textarea").resizable();
 if ((navigator.appName=="Microsoft Internet Explorer")&&(parseInt(navigator.appVersion)>=4)) {
    document.write('<INPUT TYPE="BUTTON" CLASS="button" VALUE="Copy To Clipboard" onClick="copy();">');
 } else {
    document.write('<INPUT TYPE="BUTTON" CLASS="button" VALUE="Highlight All" onClick="highlight();">');
 }
-// -->
+
             </SCRIPT>
                     </TD>
                     <TD align="RIGHT" valign="BOTTOM" nowrap> Email count:
-                        <INPUT name="count" size=5 readonly>
+                        <INPUT style="color:blue; border-color: coral;"  border="3" sname="count" size=5 readonly>
                     </TD>
 
-                      <TEXTAREA id="resarea1" NAME="phonedata" rows=5 cols=50></TEXTAREA>
+
 
                   </TR>
                 </TABLE>
@@ -123,11 +138,11 @@ if ((navigator.appName=="Microsoft Internet Explorer")&&(parseInt(navigator.appV
     </td>
   </tr>
 </table>
- </div>
 
 
 
- <hr />
+
+
  <!-- <div class="col-md-3">
    <H3>LEE</H3>
    <H3>JUNG</H3>
@@ -150,11 +165,50 @@ if ((navigator.appName=="Microsoft Internet Explorer")&&(parseInt(navigator.appV
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-<hr />
-<hr />
 
 
-  <div class="row">
+<div class="container-fluid">
+
+<table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th class="table-primary"  scope="col">#</th>
+      <th class="table-primary" >Name</th>
+      <th class="table-primary" >Email</th>
+      <th class="table-primary" >Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="table-warning" scope="row"><H2>1</H2></th>
+      <td class="table-warning"><H2 id="prenom" style="color: #10BFA2;">LEEE</H2></td>
+      <td class="table-warning"><H2 id="email" style="color: #10BFA2;" ></H2></td>
+      <td class="table-warning"><H2 id="phone" style="color: #10BFA2;" > </H2> </td>
+    </tr>
+    <!-- <tr>
+      <th scope="row">2</th>
+      <td><input type="button" value="prenom" id="sub"></td>
+      <td><input type="button" value="email" id="emailsend"></td>
+      <td><input type="button" value="phone" id="phonesend"></td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <th> <button onclick="exportTableToExcel('tblData')">Export Table Data To Excel File</button></th>
+      <th><button onclick="exportTableToExcel('tblData', 'members-data')">Export Table Data To Excel File</button></th>
+
+    </tr> -->
+  </tbody>
+</table>
+
+<input  class="btn btn-secondary" type="button" value="prenom" id="sub">
+<input  class="btn btn-secondary" type="button" value="email" id="emailsend">
+<input  class="btn btn-secondary" type="button" value="phone" id="phonesend">
+<input  class="btn btn-secondary" type="button" value="web" id="websend">
+<button class="btn btn-secondary"  onclick="exportTableToExcel('tblData')">Export Table Data To Excel File</button>
+</div>
+
+
+  <!-- <div class="row">
     <div class="row">
     <table id="tblData">
       <tr>
@@ -163,17 +217,17 @@ if ((navigator.appName=="Microsoft Internet Explorer")&&(parseInt(navigator.appV
         <th>Phone</th>
       </tr>
       <tr>
-        <td ><p id="prenom">LEEE</p></td>
-        <td> <p id="email"></p></td>
-        <td id="phone">000-000-0000</td>
+        <td><p id="prenom">LEEE</p></td>
+        <td><p id="email"></p></td>
+        <td><p id="phone"> </p> </td>
       </tr>
       <tr>
         <td>Ecrire Prenom</td>
         <td><input class="form-control" type="text" id="field"/></td>
-        <td><input type="button" value="prenom" id="sub"></td>
+        <td></td>
       </tr>
       <tr>
-        <td></td>
+        <td><input type="button" value="prenom" id="sub"></td>
         <td><input type="button" value="email" id="emailsend"></td>
         <td><input type="button" value="phone" id="phonesend"></td>
       </tr>
@@ -184,11 +238,8 @@ if ((navigator.appName=="Microsoft Internet Explorer")&&(parseInt(navigator.appV
       </tr>
     </table>
   </div>
-    <div class="row">
 
-
-  </div>
-</div>
+</div> -->
 
         <script>
         // trait pour prenom
@@ -208,9 +259,16 @@ if ((navigator.appName=="Microsoft Internet Explorer")&&(parseInt(navigator.appV
 
         // trait pour phone
         $('#phonesend').click(function(){
-          var p = $('#resarea2').val();
+          var p = $('#resarea1').val();
           // $('#field').val(p);
           $('#phone').html(p);
+        });
+
+        // trait pour phone
+        $('#websend').click(function(){
+          var p = $('#resarea3').val();
+          // $('#field').val(p);
+          $('#web').html(p);
         });
 
         </script>
